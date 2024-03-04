@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encryption and Decryption</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .container h2 {
+        text-align: center;
+        font-size: 25px;
+      }
+      label,
+      input,
+      button {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+      input[type="text"] {
+        height: 35px;
+        font-size: 15px;
+        outline: none;
+        color: #007bff;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      button {
+        padding: 10px;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button.btn1 {
+        background-color: red;
+      }
+      button.btn2 {
+        background-color: #037dff;
+      }
+      #error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Encryption and Decryption</h2>
+      <hr />
+      <br />
+      <br />
+      <input
+        type="text"
+        id="password"
+        placeholder="Enter your Text / Password"
+      />
+      <p id="error"></p>
+      <p id="result"></p>
+      <button class="btn1" onclick="encryptPassword()">Encrypt</button>
+      <button class="btn2" onclick="decryptPassword()">Decrypt</button>
+    </div>
+
+    <script>
+      const error = document.getElementById("error");
+
+      function encryptPassword() {
+        var password = document.getElementById("password").value;
+        if (password) {
+          var encryptedPassword = btoa(password); // Base64 encoding for demonstration purpose
+          document.getElementById("result").innerText =
+            "Encrypted Result: " + encryptedPassword;
+          error.innerHTML = "";
+        } else {
+          error.innerHTML = "enter the text";
+        }
+      }
+
+      function decryptPassword() {
+        var encryptedPassword = document.getElementById("password").value;
+        if (encryptedPassword) {
+          var decryptedPassword = atob(encryptedPassword); // Base64 decoding for demonstration purpose
+          document.getElementById("result").innerText =
+            "Decrypted Result: " + decryptedPassword;
+          error.innerHTML = "";
+        } else {
+          error.innerHTML = "enter the text";
+        }
+      }
+    </script>
+  </body>
+</html>
